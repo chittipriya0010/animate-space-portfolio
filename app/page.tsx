@@ -5,13 +5,13 @@ import Projects from "@/components/main/Projects";
 
 export default function Home() {
   return (
-    <div className="h-full w-full">
-      <main className="flex flex-col h-[850px] gap-20">
+    <main className="h-full w-full">
+      <div className="flex flex-col h-[850px] gap-20">
         <Hero />
         <Skills />
         <Encryption />
         <Projects />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
