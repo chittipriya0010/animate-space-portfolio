@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import StarsCanvas from "@/components/main/StarBackground";
-import Navbar from "@/components/main/Navbar";
-import Footer from "@/components/main/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
+import { PortfolioProvider } from "@/components/modern/PortfolioContext";
 
 export const metadata: Metadata = {
-  title: "Chittipriyas Portfolio-Featuring Space Design",
-  description: "This is my portfolio",
+  title: "Chittipriya Verma | Mobile Architect & Full-Stack Engineer",
+  description:
+    "Portfolio of Chittipriya Verma — building high-performance mobile apps in Flutter, scalable full-stack platforms, and AI intelligence systems.",
+  keywords: [
+    "Chittipriya",
+    "Chittipriya Verma",
+    "Flutter Developer",
+    "React Native",
+    "Full-Stack Engineer",
+    "Next.js",
+    "Mobile App Developer",
+    "AI Systems",
+    "Rust",
+  ],
 };
 
 export default function RootLayout({
@@ -18,14 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
-      >
-        <StarsCanvas />
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="en" className="dark">
+      <body className="bg-[#06080E] text-slate-100 antialiased overflow-x-hidden font-sans">
+        <PortfolioProvider>
+          {children}
+        </PortfolioProvider>
       </body>
     </html>
   );

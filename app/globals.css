@@ -1,71 +1,379 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-.cursive {
-  font-family: "Cedarville Cursive", cursive;
-}
-.Welcome-text {
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
-    ),
-    linear-gradient(90.01deg, #e59cff 0.01%, #ba9cff 50.01%, #9cb2ff 100%);
-  background-blend-mode: normal, screen;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.Welcome-box {
-  isolation: isolate;
-  overflow: hidden;
-  align-items: center;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-radius: 32px;
-  box-shadow: inset 0 -7px 11px #a48fff1f;
-  display: flex;
-
-  position: relative;
-  width: -moz-max-content;
-  width: max-content;
-  transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow;
+:root,
+html.dark {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  /* Behance & Dribbble refined dark palette */
+  --bg-primary: #0C0D10;
+  --bg-surface: #12141A;
+  --bg-elevated: #181B22;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-active: rgba(255, 255, 255, 0.16);
+  --accent-warm: #E2A03F;
+  --text-primary: #F4F4F6;
+  --text-secondary: #9E9EA8;
+  --text-muted: #5C5C66;
+  color-scheme: dark;
 }
 
-.button-primary {
-  background: linear-gradient(
-      180deg,
-      rgba(60, 8, 126, 0) 0%,
-      rgba(60, 8, 126, 0.32) 100%
-    ),
-    rgba(113, 47, 255, 0.12);
-  box-shadow: inset 0 0 12px #bf97ff3d;
-}
-.button-primary:hover {
-  background: linear-gradient(
-      180deg,
-      rgba(60, 8, 126, 0) 0%,
-      rgba(60, 8, 126, 0.42) 100%
-    ),
-    rgba(113, 47, 255, 0.24);
-  box-shadow: inset 0 0 12px #bf97ff70;
+html.light {
+  color-scheme: light;
+  
+  /* Behance & Dribbble refined light palette */
+  --bg-primary: #F8F9FA;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #F1F3F5;
+  --border-subtle: rgba(0, 0, 0, 0.07);
+  --border-active: rgba(0, 0, 0, 0.16);
+  --accent-warm: #D97706;
+  --text-primary: #111215;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.scrollbar-hidden {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+.font-serif-editorial {
+  font-family: var(--font-serif);
+}
 
+.font-mono-tech {
+  font-family: var(--font-mono);
+}
+
+/* Subtle, refined film grain simulation for high-end Dribbble aesthetic */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Universal single-line rule for all buttons */
+button,
+[role="button"],
+.btn-tactile,
+a[class*="btn"],
+.button {
+  white-space: nowrap !important;
+}
+
+/* Dribbble tactile pressed button */
+.btn-tactile {
+  background: #181A20;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap !important;
+}
+
+.btn-tactile:hover {
+  background: #20232B;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.btn-tactile:active {
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Behance case study card */
+.card-behance {
+  background: linear-gradient(180deg, rgba(24, 27, 34, 0.6) 0%, rgba(18, 20, 26, 0.8) 100%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-behance:hover {
+  border-color: var(--border-active);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0C0D10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252830;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3E4A;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   LIGHT MODE DESIGN SYSTEM (Behance / Dribbble Editorial Aesthetic)
+   ========================================================================== */
+
+html.light .modern-portfolio-root {
+  background-color: #F8F9FA !important;
+  color: #111215 !important;
+}
+
+html.light .modern-portfolio-root .bg-grain {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0) !important;
+}
+
+/* Light Mode Navigation Bar */
+html.light .modern-portfolio-root header {
+  background-color: rgba(248, 249, 250, 0.9) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+html.light .modern-portfolio-root header nav a {
+  color: #4B5563 !important;
+}
+
+html.light .modern-portfolio-root header nav a:hover {
+  color: #111215 !important;
+}
+
+/* Light Mode Headings & Typography */
+html.light .modern-portfolio-root h1,
+html.light .modern-portfolio-root h2,
+html.light .modern-portfolio-root h3,
+html.light .modern-portfolio-root .text-neutral-100 {
+  color: #111215 !important;
+}
+
+html.light .modern-portfolio-root .text-neutral-200,
+html.light .modern-portfolio-root .text-neutral-300 {
+  color: #1F2937 !important;
+}
+
+html.light .modern-portfolio-root .text-neutral-400 {
+  color: #4B5563 !important;
+}
+
+html.light .modern-portfolio-root .text-neutral-500 {
+  color: #6B7280 !important;
+}
+
+/* Editorial accent highlights in Light Mode */
+html.light .modern-portfolio-root .text-amber-200\/95,
+html.light .modern-portfolio-root .text-amber-200\/90,
+html.light .modern-portfolio-root .text-amber-200 {
+  color: #B45309 !important;
+}
+
+html.light .modern-portfolio-root .text-amber-300,
+html.light .modern-portfolio-root .text-amber-300\/80 {
+  color: #D97706 !important;
+}
+
+/* Light Mode Borders */
+html.light .modern-portfolio-root section,
+html.light .modern-portfolio-root .border-b,
+html.light .modern-portfolio-root .border-t,
+html.light .modern-portfolio-root .border-white\/\[0\.06\],
+html.light .modern-portfolio-root .border-white\/\[0\.08\],
+html.light .modern-portfolio-root .border-white\/\[0\.05\],
+html.light .modern-portfolio-root .border-white\/10,
+html.light .modern-portfolio-root .border-neutral-800,
+html.light .modern-portfolio-root .border-neutral-800\/80,
+html.light .modern-portfolio-root .border-neutral-800\/60,
+html.light .modern-portfolio-root .border-neutral-700\/60 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Light Mode Cards */
+html.light .modern-portfolio-root .card-behance {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .modern-portfolio-root .card-behance:hover {
+  border-color: rgba(0, 0, 0, 0.16) !important;
+  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Light Mode Tactile Buttons */
+html.light .modern-portfolio-root .btn-tactile {
+  background: #FFFFFF !important;
+  color: #111215 !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+html.light .modern-portfolio-root .btn-tactile:hover {
+  background: #F3F4F6 !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+/* Light Mode Chips, Badges, and Secondary Elements */
+html.light .modern-portfolio-root .subtle-metric-card,
+html.light .modern-portfolio-root [class*="bg-neutral-900"],
+html.light .modern-portfolio-root [class*="bg-neutral-800"],
+html.light .modern-portfolio-root .bg-white\/\[0\.02\],
+html.light .modern-portfolio-root .bg-white\/\[0\.03\],
+html.light .modern-portfolio-root .bg-white\/\[0\.04\] {
+  background-color: #F1F3F5 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111215 !important;
+}
+
+html.light .modern-portfolio-root .subtle-metric-card p.text-neutral-100,
+html.light .modern-portfolio-root .subtle-metric-card p.text-neutral-200 {
+  color: #111215 !important;
+}
+
+html.light .modern-portfolio-root .subtle-metric-card p.text-neutral-500 {
+  color: #6B7280 !important;
+}
+
+html.light .modern-portfolio-root .subtle-metric-card p.text-amber-400,
+html.light .modern-portfolio-root .subtle-metric-card p.text-amber-300 {
+  color: #D97706 !important;
+}
+
+html.light .modern-portfolio-root .tech-pill-chip {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #1F2937 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .modern-portfolio-root .tech-pill-chip:hover {
+  border-color: rgba(0, 0, 0, 0.22) !important;
+  background-color: #F9FAFB !important;
+}
+
+/* Light Mode Inputs, Select, and Textarea */
+html.light .modern-portfolio-root input,
+html.light .modern-portfolio-root select,
+html.light .modern-portfolio-root textarea {
+  background-color: #FFFFFF !important;
+  color: #111215 !important;
+  border-color: rgba(0, 0, 0, 0.14) !important;
+}
+
+html.light .modern-portfolio-root input::placeholder,
+html.light .modern-portfolio-root textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+html.light .modern-portfolio-root input:focus,
+html.light .modern-portfolio-root select:focus,
+html.light .modern-portfolio-root textarea:focus {
+  border-color: #D97706 !important;
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.15) !important;
+}
+
+/* Light Mode Phone Mockup */
+html.light .modern-portfolio-root .device-mockup-frame {
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.05) !important;
+  background-color: #F1F5F9 !important;
+}
+
+html.light .modern-portfolio-root .device-mockup-screen {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+/* Light Mode Footer */
+html.light .modern-portfolio-root footer {
+  background-color: #F1F3F5 !important;
+  border-top-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* Light Mode Scrollbars */
+html.light ::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Light Mode Resume Modal */
+html.light .resume-modal-body {
+  background-color: #FFFFFF !important;
+  color: #111215 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light .resume-modal-body .text-white,
+html.light .resume-modal-body .text-neutral-100,
+html.light .resume-modal-body .text-neutral-200 {
+  color: #111215 !important;
+}
+
+html.light .resume-modal-body .text-neutral-300,
+html.light .resume-modal-body .text-neutral-400 {
+  color: #374151 !important;
+}
+
+html.light .resume-modal-body .text-neutral-500 {
+  color: #6B7280 !important;
+}
+
+html.light .resume-modal-body .border-b,
+html.light .resume-modal-body .border-t,
+html.light .resume-modal-body .border-white\/\[0\.08\],
+html.light .resume-modal-body .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .resume-modal-body .bg-neutral-900 {
+  background-color: #F3F4F6 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #1F2937 !important;
 }
