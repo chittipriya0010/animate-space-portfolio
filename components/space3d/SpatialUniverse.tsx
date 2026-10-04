@@ -159,10 +159,15 @@ function SpatialAvatarMesh({
   return (
     <group
       ref={group}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
+      onPointerOver={() => {
+        setHovered(true);
+        if (typeof document !== "undefined") document.body.style.cursor = "pointer";
+      }}
+      onPointerOut={() => {
+        setHovered(false);
+        if (typeof document !== "undefined") document.body.style.cursor = "auto";
+      }}
       onClick={() => onSelectStation("rotunda")}
-      cursor="pointer"
     >
       {/* Head */}
       <group ref={headRef} position={[0, 1.1, 0]}>
@@ -255,9 +260,15 @@ function RotundaProjectPod({
         e.stopPropagation();
         onSelect();
       }}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      cursor="pointer"
+      onPointerOver={(e) => {
+        e.stopPropagation();
+        setHovered(true);
+        if (typeof document !== "undefined") document.body.style.cursor = "pointer";
+      }}
+      onPointerOut={() => {
+        setHovered(false);
+        if (typeof document !== "undefined") document.body.style.cursor = "auto";
+      }}
     >
       <group ref={meshRef}>
         {/* Floating 3D Crystal / Kiosk Body */}
