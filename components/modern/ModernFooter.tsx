@@ -5,7 +5,7 @@ import { usePortfolio } from "./PortfolioContext";
 import { PORTFOLIO_PROFILE } from "@/constants/portfolioData";
 
 export default function ModernFooter() {
-  const { mode, toggleMode, theme, toggleTheme, setIsResumeOpen } = usePortfolio();
+  const { mode, toggleMode, theme, toggleTheme } = usePortfolio();
 
   return (
     <footer className="border-t border-white/[0.06] bg-[#0C0D10] py-12 text-xs font-mono text-neutral-500">

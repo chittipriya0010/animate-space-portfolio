@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { PORTFOLIO_PROFILE } from "@/constants/portfolioData";
 import { usePortfolio } from "./PortfolioContext";
 import dynamic from "next/dynamic";
 

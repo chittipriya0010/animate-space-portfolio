@@ -5,7 +5,7 @@ import { usePortfolio } from "./PortfolioContext";
 import { PORTFOLIO_PROFILE } from "@/constants/portfolioData";
 
 export default function ModernNavbar() {
-  const { mode, setMode, toggleMode, theme, toggleTheme, setIsResumeOpen } = usePortfolio();
+  const { mode, setMode, theme, toggleTheme, setIsResumeOpen } = usePortfolio();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#0C0D10]/85 backdrop-blur-md transition-all duration-200">
